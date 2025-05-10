@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+
+/* header */
+
+header {
+    width: 100%;
+    padding-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.966);
+}
+
+
+.h2_header {
+    color: #f2f2f2;
+}
+
+
+.btn_header {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.1rem;
+    border: 1px solid #f2f2f2;
+    border-radius: 7px;
+    color: aliceblue;
+    background-color: black;
+    text-decoration: none;
+}
+
+
+/* auth */
+
+.con_auth {
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+
+.auth {
+    background-color: rgb(26, 24, 24);
+    text-align: center;
+    padding-bottom: 100px;
+
+}
+
+
+.auth_block {
+    border: #f2f2f2 1px solid;
+    border-radius: 20px;
+    padding: 5px;
+    display: inline-block;
+    padding: 30px;
+}
+
+
+.h2_auth {
+    font-size: 3rem;
+    color: #f2f2f2;
+}
+
+
+input {
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+
+label {
+    display: block;
+    color: #f2f2f2;
+    font-size: 1.2rem;
+}
+
+
+.btn_auth_1 {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.1rem;
+    border: 1px solid #f2f2f2;
+    border-radius: 7px;
+    color: aliceblue;
+    background-color: black;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+
+
+/* messenger */
+
+.con_messenger {
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+
+.messenger {
+    background-color: rgb(26, 24, 24);
+    padding-bottom: 200px;
+}
+
+
+.nav {
+    border: #f2f2f2 1px solid;
+    border-radius: 20px;
+    margin-right: 250px;
+    border-left: none;
+    border-top: none;
+    width: 25%;
+}
+
+
+.h1_mess {
+    text-align: center;
+    color: #f2f2f2;
+    font-size: 2.7rem;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.h2_mess {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
