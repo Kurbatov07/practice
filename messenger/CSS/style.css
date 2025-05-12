@@ -52,7 +52,7 @@ header {
 
 
 .auth {
-    background-color: rgb(26, 24, 24);
+    background: linear-gradient(#f2f2f2, rgb(26, 24, 24));
     text-align: center;
     padding-bottom: 100px;
 
@@ -70,7 +70,7 @@ header {
 
 .h2_auth {
     font-size: 3rem;
-    color: #f2f2f2;
+    color: rgb(27, 27, 27);
 }
 
 
@@ -107,16 +107,14 @@ label {
 
 /* messenger */
 
-.con_messenger {
-    width: 40%;
-    margin: 0 auto;
-    padding-top: 200px;
+.con_chat {
+
 }
 
 
 .messenger {
-    background-color: rgb(26, 24, 24);
-    padding-bottom: 200px;
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    display: flex;
 }
 
 
@@ -127,6 +125,8 @@ label {
     border-left: none;
     border-top: none;
     width: 25%;
+    padding-top: 40px;
+    background-color: rgba(0, 0, 0, 0.788);
 }
 
 
@@ -154,3 +154,33 @@ label {
 }
 
 
+.chat {
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.788);
+    padding: 5px;
+    padding-top: 170px;
+    padding-bottom: 170px;
+    padding-left: 20px;
+    padding-right: 30px;
+    margin-right: 270px;
+    margin-bottom: 50px;
+}
+
+
+.h2_chat {
+    color: #f2f2f2;
+    position: absolute;
+  margin-bottom: 121.92px;
+  left: 665.15px;
+  margin-top: -155.08px;
+}
+
+
+.inp_chat {
+    position: absolute;
+    margin-right: ;
+    width: 30%;
+    border: 1px rgb(128, 156, 156) solid;
+    top: 638.833px;
+    left: 958.383px;
+}
