@@ -5,12 +5,6 @@ body {
 }
 
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 200px;
-}
-
 
 /* header */
 
@@ -54,7 +48,7 @@ header {
 .auth {
     background: linear-gradient(#f2f2f2, rgb(26, 24, 24));
     text-align: center;
-    padding-bottom: 100px;
+    padding-bottom: 345px;
 
 }
 
@@ -108,24 +102,26 @@ label {
 /* messenger */
 
 .con_chat {
-
+    padding-top: 50px;
+    width: 70%;
 }
 
 
 .messenger {
     background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
     display: flex;
+    padding-bottom: 150px;
 }
 
 
 .nav {
     border: #f2f2f2 1px solid;
     border-radius: 20px;
-    margin-right: 250px;
+    margin-right: 150px;
     border-left: none;
     border-top: none;
     width: 25%;
-    padding-top: 40px;
+    padding-top: 30px;
     background-color: rgba(0, 0, 0, 0.788);
 }
 
@@ -151,6 +147,7 @@ label {
     border-top: none;
     border-left: none;
     border-right: none;
+
 }
 
 
@@ -159,28 +156,129 @@ label {
     background-color: rgba(0, 0, 0, 0.788);
     padding: 5px;
     padding-top: 170px;
-    padding-bottom: 170px;
+    padding-bottom: 350px;
     padding-left: 20px;
     padding-right: 30px;
     margin-right: 270px;
     margin-bottom: 50px;
+    border: #f2f2f2 1px solid;
 }
 
 
 .h2_chat {
     color: #f2f2f2;
-    position: absolute;
-  margin-bottom: 121.92px;
-  left: 665.15px;
-  margin-top: -155.08px;
+    margin-top: -167px;
+    border: aliceblue 1px solid;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: aliceblue;
+    border-left-width: 1px;
+    border-left-style: solid;
+    border-left-color: aliceblue;
+    margin-right: 800px;
+    border-left: none;
+    border-top: none;
+    padding-bottom: 10px;
 }
 
 
 .inp_chat {
+    width: 25%;
+    border: 1px #f2f2f2 solid;
+    border-radius: 20px;
+    background-color: black;
+    color: #f2f2f2;
+    text-align: left;
+    padding: 10px;
+
     position: absolute;
-    margin-right: ;
-    width: 30%;
-    border: 1px rgb(128, 156, 156) solid;
-    top: 638.833px;
-    left: 958.383px;
+    left: 936.533px;
+    top: 732px;
+}
+
+
+.youser {
+    color: aliceblue;
+    border: #f2f2f2 1px solid;
+    margin-right: 800px;
+    border-left: none;
+    margin-bottom: -20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.WWchat {
+    background-color: rgb(203, 204, 204);
+    margin-left: 240px;
+    padding-top: 323px;
+    margin-left: 0px;
+    position: absolute;
+    left: 877.3px;
+    top: 141.917px;
+    padding-right: 250px;
+    padding-left: 450px;
+    padding-top: 500px;
+    padding-bottom: 150px;
+}
+
+
+button {
+    border: 1px solid;
+    border-radius: 20px;
+    position: absolute;
+    left: 1462px;
+    top: 737.5px;
+    padding: 5px;
+    background-color: #f2f2f2;
+    color: #111;
+}
+
+
+/* registration*/
+
+.regist {
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+}
+
+
+.con_regist {
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    text-align: center;
+}
+
+
+.regist_div {
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    padding: 50px;
+    border: #f2f2f2 1px solid;
+    border-radius: 20px;
+
+}
+
+
+.h2_regist {
+    color: #f2f2f2;
+    text-align: center;
+}
+
+
+.btn_regist {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 1.1rem;
+    border: 1px solid #f2f2f2;
+    border-radius: 7px;
+    color: aliceblue;
+    background-color: black;
+    text-decoration: none;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
 }
