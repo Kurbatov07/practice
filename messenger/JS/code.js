@@ -1,38 +1,155 @@
 //#region 
-const HOST = ` http://api-messenger.web-srv.local`;
+const HOST = `http://api-messenger.web-srv.local`;
 const CONTENT = document.querySelector(`.content`);
-var TOKEN = ``
+var TOKEN = ``;
 //#endregion
 
-//#region AUTH
-loadPageAuth();
-    function loadPageAuth() {
-        let xhr = new XMLHttpRequest();
-        xhr.open("GET", "/modules/auth.html");
-        xhr.send();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                CONTENT.innerHTML = xhr.responseText
-                onLoadPageAuth()
+//#region combain
+
+function _del() {
+    let HTTP_REQUEST = new XMLHttpRequest()
+    HTTP_REQUEST.open('DELETE', params.url)
+    HTTP_REQUEST.send()
+    HTTP_REQUEST.onreadystatechange = function () {
+        if (HTTP_REQUEST.readyState == 4) {
+            callback(HTTP_REQUEST.responseText)
+        }
+    }
+}
+
+function _get(params, callback) {
+    let HTTP_REQUEST = new XMLHttpRequest();
+    HTTP_REQUEST.open('GET', params.url)
+    HTTP_REQUEST.send()
+    HTTP_REQUEST.onreadystatechange = function () {
+        if (HTTP_REQUEST.readyState == 4) {
+            callback(HTTP_REQUEST.responseText)
+        }
+    };
+}
+
+function _elem(selector) {
+    return document.querySelector(selector)
+}
+
+function _post(params, callback) {
+    let HTTP_REQUEST = new XMLHttpRequest();
+    HTTP_REQUEST.open('POST', params.url)
+    HTTP_REQUEST.send(params.data)
+
+    HTTP_REQUEST.onreadystatechange = function () {
+        if (HTTP_REQUEST.readyState == 4) {
+            callback(HTTP_REQUEST.responseText)
+        }
+    }
+}
+
+function _load(url, callback) {
+    let HTTP_REQUEST = new XMLHttpRequest();
+    HTTP_REQUEST.open('GET', url);
+    HTTP_REQUEST.send();
+
+    HTTP_REQUEST.onreadystatechange = function () {
+        if (HTTP_REQUEST.readyState == 4) {
+            if (callback) {
+                callback(HTTP_REQUEST.responseText)
             }
         }
     }
+}
 
+//#endregion
 
-    function onLoadPageAuth() {
-        document.querySelector (".btn_auth_1").addEventListener('click',function(){
-            let fdata =new FormData();
-            fdata.append("Name",document.querySelector('input[name="Name"]').value);
-            fdata.append("First_name",document.querySelector('input[name="First_name"]').value);
-            fdata.append("Number",document.querySelector('input[name="Number"]').value);
-            let xhr = new XMLHttpRequest();
-            xhr.open("POST", '${HOST}/auth.html');
-            xhr.send(fdata);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState ==4) {
-                    console.log(this.responseText);
-                    if (xhr.status == 200);
-                }
+//#region auth
+loadAuth();
+function loadAuth() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("GET", "/modules/auth.html");
+    xhr.send();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            CONTENT.innerHTML = xhr.responseText;
+            onLoadAuth();
+        }
+    }
+}
+//#endregion
+
+//#region registration
+function regist() {
+    document.querySelector('.btn_regist_1').addEventListener('click', function () {
+        let fdata = new FormData();
+            _load('/MODULES/registration.html', function (responseText) {
+                CONTENT.innerHTML = responseText;
+                regist();
+            });
+        });
+    }
+
+function registration() {
+    document.querySelector(".btn_regist_1").addEventListener('click', function () {
+        let fdata = new FormData()
+        fdata.append("fam", document.querySelector('input[name="fam"]').value);
+        fdata.append("name", document.querySelector('input[name="name"]').value);
+        fdata.append("otch", document.querySelector('input[name="otch"]').value);
+        fdata.append("email", document.querySelector('input[name="Email"]').value);
+        fdata.append("pass", document.querySelector('input[name="Pass"]').value);
+
+        _post({ url: `${HOST}/user/`, data: fdata }), function (responseText) {
+            regData = JSON.parse(responseText);
+            console.log(regData)
+
+            if (regData.data) {
+                token = regData.Data.token
+                console.log(token);
+
+                _load('/MODULES/registration.html', function (responseText) {
+                    CONTENT.innerHTML = responseText
+                })
+            }
+        }
+    })
+}
+
+//#endregion
+
+//#region messenger
+function onLoadAuth() {
+    document.querySelector(".btn_auth_1").addEventListener('click', function () {
+        let fdata = new FormData();
+        fdata.append("email", document.querySelector('input[name="Email"]').value);
+        fdata.append("pass", document.querySelector('input[name="Pass"]').value);
+
+        _post({ url: `${HOST}/auth/`, data: fdata }, function (responseText) {
+            AuthData = JSON.parse(responseText);
+            console.log(AuthData);
+
+            if (AuthData.message) {
+                token = AuthData.Data.token
+                console.log(token);
+                _load('/MODULES/messenger.html', function (responseText) {
+                    CONTENT.innerHTML = responseText
+                })
             }
         })
+    });
+}
+//#endregion
+
+
+//#region logout
+function onClickBtnLogout() {
+    let fdata = new FormData();
+    fdata.append("token", TOKEN)
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", `${HOST}/auth/`);
+    xhr.send(fdata);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            console.log(this.responseText);
+            if (xhr.status == 200) {
+                loadAuth();
+            }
+        }
     }
+}
