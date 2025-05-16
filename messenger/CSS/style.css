@@ -46,7 +46,7 @@ header {
 
 
 .auth {
-    background: linear-gradient(#f2f2f2, rgb(26, 24, 24));
+    background-color: #1a1919;
     text-align: center;
     padding-bottom: 345px;
 
@@ -54,11 +54,12 @@ header {
 
 
 .auth_block {
-    border: #f2f2f2 1px solid;
+    border: #dfdcdc 1px solid;
     border-radius: 20px;
     padding: 5px;
     display: inline-block;
     padding: 30px;
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
 }
 
 
@@ -100,7 +101,7 @@ label {
 
 
 .btn_regist_1 {
-     margin-bottom: 25px;
+    margin-bottom: 25px;
     margin-top: 25px;
     padding-left: 30px;
     padding-right: 30px;
@@ -126,7 +127,7 @@ label {
 
 
 .messenger {
-    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    background-color: #1a1919;
     display: flex;
     padding-bottom: 150px;
 }
@@ -171,7 +172,7 @@ label {
 
 .chat {
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.788);
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
     padding: 5px;
     padding-top: 170px;
     padding-bottom: 350px;
@@ -211,7 +212,7 @@ label {
 
     position: absolute;
     left: 936.533px;
-    top: 732px;
+    top: 800px;
 }
 
 
@@ -227,7 +228,7 @@ label {
 
 
 .WWchat {
-    background-color: rgb(203, 204, 204);
+    background-color: rgb(151, 151, 151);
     margin-left: 240px;
     padding-top: 323px;
     margin-left: 0px;
@@ -237,8 +238,8 @@ label {
     padding-right: 250px;
     padding-left: 450px;
     padding-top: 500px;
-    padding-bottom: 150px;
-    border: black 1px solid;
+    padding-bottom: 250px;
+    border: #f2f2f2 1px solid;
 }
 
 
@@ -247,17 +248,40 @@ button {
     border-radius: 20px;
     position: absolute;
     left: 1462px;
-    top: 737.5px;
+    top: 805px;
     padding: 5px;
     background-color: #f2f2f2;
     color: #111;
 }
 
 
+.img_mess {
+    width: 80px;
+}
+
+
+.y {
+    color: #f2f2f2;
+    background-color: black;
+    text-align: center;
+    margin-bottom: 116.92;
+    position: absolute;
+    bottom: 743px;
+    left: 878px;
+    padding-bottom: 20px;
+    padding-left: 311px;
+    padding-right: 340px;
+    border: 1px #f2f2f2 solid;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+
 /* registration*/
 
 .regist {
-    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    background-color: #1a1919;
 }
 
 
@@ -300,4 +324,35 @@ button {
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
+}
+
+
+/* news */
+
+.news {
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    padding-bottom: 580px;
+    display: flex;
+}
+
+
+.h2_news {
+    text-align: center;
+    background-color: black;
+    color: #f2f2f2;
+    padding: 25px;
+    padding-left: 450px;
+    padding-right: 450px;
+    font-size: 2.6rem;
+    border: 1px #f2f2f2 solid;
+    border-bottom: none;
+    margin: 0;
+}
+
+
+.block_news {
+    background-color: rgb(151, 151, 151);
+    padding-bottom: 700px;
+    border: #f2f2f2 1px solid;
+    border-top: none;
 }

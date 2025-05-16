@@ -77,39 +77,53 @@ function loadAuth() {
 
 //#region registration
 function regist() {
-    document.querySelector('.btn_regist_1').addEventListener('click', function () {
-        let fdata = new FormData();
+   document.querySelector('.btn_regist_1').addEventListener(`click`, function(){
+    let fdata = new FormData();
+   });
+    if (btnRegist) {
+        btnRegist.addEventListener('click', function () {
             _load('/MODULES/registration.html', function (responseText) {
                 CONTENT.innerHTML = responseText;
-                regist();
+                registration();
             });
         });
     }
+}
 
 function registration() {
-    document.querySelector(".btn_regist_1").addEventListener('click', function () {
-        let fdata = new FormData()
-        fdata.append("fam", document.querySelector('input[name="fam"]').value);
-        fdata.append("name", document.querySelector('input[name="name"]').value);
-        fdata.append("otch", document.querySelector('input[name="otch"]').value);
-        fdata.append("email", document.querySelector('input[name="Email"]').value);
-        fdata.append("pass", document.querySelector('input[name="Pass"]').value);
+    document.querySelector('.btn_regist_1').addEventListener(`click`, function(){   
+    });
+    if (register) {
+        register.addEventListener('click', function () {
+            let fdata = new FormData();
 
-        _post({ url: `${HOST}/user/`, data: fdata }), function (responseText) {
-            regData = JSON.parse(responseText);
-            console.log(regData)
+            fdata.append("fam", document.querySelector('input[name="fam"]').value);
+            fdata.append("name", document.querySelector('input[name="name"]').value);
+            fdata.append("otch", document.querySelector('input[name="otch"]').value);
+            fdata.append("email", document.querySelector('input[name="Email"]').value);
+            fdata.append("pass", document.querySelector('input[name="Pass"]').value);
 
-            if (regData.data) {
-                token = regData.Data.token
-                console.log(token);
+            _post({ url: `${HOST}/user/`, data: fdata }, function (responseText) {
+                let regData = JSON.parse(responseText);
+                console.log(regData);
 
-                _load('/MODULES/registration.html', function (responseText) {
-                    CONTENT.innerHTML = responseText
-                })
-            }
-        }
-    })
+                if (regData.data) {
+                    token = regData.Data.token;
+                    console.log(token);
+
+                    _load('/MODULES/registration.html', function (responseText) {
+                        CONTENT.innerHTML = responseText;
+                    });
+                } else {
+                    console.error('Ошибка регистрации:', regData);
+                }
+                regist();
+
+            });
+        });
+    }
 }
+
 
 //#endregion
 
@@ -128,7 +142,7 @@ function onLoadAuth() {
                 token = AuthData.Data.token
                 console.log(token);
                 _load('/MODULES/messenger.html', function (responseText) {
-                    CONTENT.innerHTML = responseText
+                    CONTENT.innerHTML = responseText;
                 })
             }
         })
@@ -138,18 +152,32 @@ function onLoadAuth() {
 
 
 //#region logout
-function onClickBtnLogout() {
-    let fdata = new FormData();
-    fdata.append("token", TOKEN)
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", `${HOST}/auth/`);
-    xhr.send(fdata);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            console.log(this.responseText);
-            if (xhr.status == 200) {
-                loadAuth();
-            }
-        }
+function logout() {
+    const btnHeader = document.querySelector('.btn_header');
+    if (btnHeader) {
+        btnHeader.addEventListener('click', function () {
+            let fdata = new FormData();
+            fdata.append("token", TOKEN);
+
+            fetch(`${HOST}/auth/`, {
+                method: 'POST',
+                body: fdata
+            })
+                .then(response => response.json())
+                .then(AuthData => {
+                    if (AuthData.message || AuthData.success) {
+                        TOKEN = null;
+
+                        _load('/MODULES/auth.html', function (responseText) {
+                            CONTENT.innerHTML = responseText;
+                        });
+                    } else {
+                        console.error('Ошибка выхода:', AuthData);
+                    }
+                })
+                .catch(error => console.error('Ошибка при запросе:', error));
+        });
     }
 }
+
+logout();
