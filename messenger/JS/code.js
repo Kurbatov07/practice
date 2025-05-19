@@ -70,6 +70,12 @@ function loadAuth() {
         if (xhr.readyState == 4) {
             CONTENT.innerHTML = xhr.responseText;
             onLoadAuth();
+            document.querySelector(".btn_regist_1").addEventListener('click', function () {
+                _load('/MODULES/registration.html', function (responseText) {
+                    CONTENT.innerHTML = responseText;
+                    regist();
+                })
+            })
         }
     }
 }
@@ -77,54 +83,41 @@ function loadAuth() {
 
 //#region registration
 function regist() {
-   document.querySelector('.btn_regist_1').addEventListener(`click`, function(){
-    let fdata = new FormData();
-   });
-    if (btnRegist) {
-        btnRegist.addEventListener('click', function () {
-            _load('/MODULES/registration.html', function (responseText) {
-                CONTENT.innerHTML = responseText;
-                registration();
-            });
-        });
-    }
+    Registration();
 }
 
-function registration() {
-    document.querySelector('.btn_regist_1').addEventListener(`click`, function(){   
-    });
-    if (register) {
-        register.addEventListener('click', function () {
-            let fdata = new FormData();
+function Registration() {
+    document.querySelector('.btn_regist').addEventListener('click', function () {
+        let fdata = new FormData();
 
-            fdata.append("fam", document.querySelector('input[name="fam"]').value);
-            fdata.append("name", document.querySelector('input[name="name"]').value);
-            fdata.append("otch", document.querySelector('input[name="otch"]').value);
-            fdata.append("email", document.querySelector('input[name="Email"]').value);
-            fdata.append("pass", document.querySelector('input[name="Pass"]').value);
+        fdata.append('fam', document.querySelector('input[name="First_name"]').value);
+        fdata.append('name', document.querySelector('input[name="Name"]').value);
+        fdata.append('otch', document.querySelector('input[name="Otch"]').value);
+        fdata.append('email', document.querySelector('input[name="Email"]').value);
+        fdata.append('pass', document.querySelector('input[name="Password"]').value);
 
-            _post({ url: `${HOST}/user/`, data: fdata }, function (responseText) {
-                let regData = JSON.parse(responseText);
+        let HTTP_REQUEST = new XMLHttpRequest();
+        HTTP_REQUEST.open('POST', `${HOST}/user/`);
+        HTTP_REQUEST.send(fdata);
+
+        HTTP_REQUEST.onreadystatechange = function () {
+            if (HTTP_REQUEST.readyState === 4) {
+                regData = JSON.parse(HTTP_REQUEST.responseText);
                 console.log(regData);
 
-                if (regData.data) {
-                    token = regData.Data.token;
+                if (regData.message) {
+                    let token = regData.Data.token;
+                    localStorage.setItem('_token', token);
                     console.log(token);
 
                     _load('/MODULES/registration.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
                     });
-                } else {
-                    console.error('Ошибка регистрации:', regData);
                 }
-                regist();
-
-            });
-        });
-    }
+            }
+        };
+    });
 }
-
-
 //#endregion
 
 //#region messenger
@@ -179,5 +172,4 @@ function logout() {
         });
     }
 }
-
 logout();

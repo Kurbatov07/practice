@@ -135,7 +135,7 @@ label {
 
 .nav {
     border: #f2f2f2 1px solid;
-    border-radius: 20px;
+    border-radius: 0px 20px 20px 20px;
     margin-right: 150px;
     border-left: none;
     border-top: none;
@@ -268,7 +268,7 @@ button {
     position: absolute;
     bottom: 743px;
     left: 878px;
-    padding-bottom: 20px;
+    padding-bottom: 19px;
     padding-left: 311px;
     padding-right: 340px;
     border: 1px #f2f2f2 solid;
