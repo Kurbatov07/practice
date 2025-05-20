@@ -1,4 +1,4 @@
-//#region 
+//#region host
 const HOST = `http://api-messenger.web-srv.local`;
 const CONTENT = document.querySelector(`.content`);
 var TOKEN = ``;
@@ -110,7 +110,7 @@ function Registration() {
                     localStorage.setItem('_token', token);
                     console.log(token);
 
-                    _load('/MODULES/registration.html', function (responseText) {
+                    _load('/MODULES/messenger.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
                     });
                 }
@@ -173,3 +173,11 @@ function logout() {
     }
 }
 logout();
+
+
+function logout() {
+    document.querySelector('.btn_header').addEventListener('click', function(){
+        let fdata = new FormData();
+        _del ({url:'${HOST}'})
+    })
+}
