@@ -126,7 +126,6 @@ label {
 
 
 .messenger {
-
     display: flex;
     padding-bottom: 150px;
     background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
@@ -136,6 +135,7 @@ label {
 .nav {
     border: #f2f2f2 1px solid;
     border-radius: 0px 20px 20px 20px;
+    margin-bottom: 250px;
     margin-right: 150px;
     border-left: none;
     border-top: none;
@@ -166,7 +166,6 @@ label {
     border-top: none;
     border-left: none;
     border-right: none;
-
 }
 
 
@@ -175,7 +174,7 @@ label {
     background-color: #1a1919;
     padding: 5px;
     padding-top: 170px;
-    padding-bottom: 350px;
+    padding-bottom: 250px;
     padding-left: 20px;
     padding-right: 30px;
     margin-right: 270px;
@@ -195,9 +194,9 @@ label {
     border-left-style: solid;
     border-left-color: aliceblue;
     margin-right: 800px;
-    border-left: none;
     border-top: none;
     padding-bottom: 10px;
+    padding-left: 10px;
 }
 
 
@@ -220,15 +219,16 @@ label {
     color: aliceblue;
     border: #f2f2f2 1px solid;
     margin-right: 800px;
-    border-left: none;
-    margin-bottom: -20px;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-bottom: 15px;
 }
 
 
 .WWchat {
-    background-color: rgb(151, 151, 151);
+    background-color: rgb(102, 100, 100);
     margin-left: 240px;
     padding-top: 323px;
     margin-left: 0px;
@@ -257,6 +257,9 @@ button {
 
 .img_mess {
     width: 80px;
+    border: 1px solid #f2f2f2;
+    background-color: #f2f2f2;
+    border-radius: 40px;
 }
 
 
@@ -327,35 +330,4 @@ button {
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
-}
-
-
-/* news */
-
-.news {
-    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
-    padding-bottom: 580px;
-    display: flex;
-}
-
-
-.h2_news {
-    text-align: center;
-    background-color: black;
-    color: #f2f2f2;
-    padding: 25px;
-    padding-left: 450px;
-    padding-right: 450px;
-    font-size: 2.6rem;
-    border: 1px #f2f2f2 solid;
-    border-bottom: none;
-    margin: 0;
-}
-
-
-.block_news {
-    background-color: rgb(151, 151, 151);
-    padding-bottom: 700px;
-    border: #f2f2f2 1px solid;
-    border-top: none;
 }

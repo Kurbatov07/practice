@@ -146,38 +146,20 @@ function onLoadAuth() {
 
 //#region logout
 function logout() {
-    const btnHeader = document.querySelector('.btn_header');
-    if (btnHeader) {
-        btnHeader.addEventListener('click', function () {
-            let fdata = new FormData();
-            fdata.append("token", TOKEN);
-
-            fetch(`${HOST}/auth/`, {
-                method: 'POST',
-                body: fdata
-            })
-                .then(response => response.json())
-                .then(AuthData => {
-                    if (AuthData.message || AuthData.success) {
-                        TOKEN = null;
-
-                        _load('/MODULES/auth.html', function (responseText) {
-                            CONTENT.innerHTML = responseText;
-                        });
-                    } else {
-                        console.error('Ошибка выхода:', AuthData);
-                    }
-                })
-                .catch(error => console.error('Ошибка при запросе:', error));
-        });
-    }
-}
-logout();
-
-
-function logout() {
-    document.querySelector('.btn_header').addEventListener('click', function(){
+    document.querySelector('.btn_header').addEventListener('click', function () {
         let fdata = new FormData();
-        _del ({url:'${HOST}'})
-    })
+
+        _del({ url: `${HOST}/auth/`, data: fdata }, function (responseText) {
+            let LogData = JSON.parse(responseText);
+            console.log(LogData);
+
+            if (LogData) {
+                token = null;
+                console.log(token);
+                _load('/MODULES/auth.html', function (responseText) {
+                    CONTENT.innerHTML = responseText;
+                });
+            }
+        });
+    });
 }
