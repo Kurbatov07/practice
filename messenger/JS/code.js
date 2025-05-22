@@ -110,7 +110,7 @@ function Registration() {
                     localStorage.setItem('_token', token);
                     console.log(token);
 
-                    _load('/MODULES/messenger.html', function (responseText) {
+                    _load('/MODULES/meccenger.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
                     });
                 }
@@ -134,7 +134,7 @@ function onLoadAuth() {
             if (AuthData.message) {
                 token = AuthData.Data.token
                 console.log(token);
-                _load('/MODULES/messenger.html', function (responseText) {
+                _load('/MODULES/meccenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
                 })
             }
@@ -145,7 +145,7 @@ function onLoadAuth() {
 
 
 //#region logout
-function logout() {
+/*function logout() {
     document.querySelector('.btn_header').addEventListener('click', function () {
         let fdata = new FormData();
 
@@ -158,8 +158,48 @@ function logout() {
                 console.log(token);
                 _load('/MODULES/auth.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
+
                 });
             }
         });
+    });
+}*/
+
+
+function _load(url, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            callback(xhr.responseText);
+        } else {
+            console.error('Ошибка загрузки:', xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function logout(url, token) {
+    document.querySelector('.btn_header').addEventListener("click", function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", url);
+        xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+      
+        xhr.onload = function () {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                console.log("Токен успешно удалён", xhr.responseText);
+                
+                _load('/MODULES/auth.html', function (responseText) {
+                    const CONTENT = document.getElementById('CONTENT');
+                    if (CONTENT) {
+                        CONTENT.innerHTML = responseText;
+                    }
+                });
+            } else {
+                console.error('Ошибка при получении токена', xhr.status, xhr.responseText);
+            }
+        };
+
+        xhr.send();
     });
 }
