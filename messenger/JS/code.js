@@ -102,17 +102,20 @@ function Registration() {
 
         HTTP_REQUEST.onreadystatechange = function () {
             if (HTTP_REQUEST.readyState === 4) {
-                regData = JSON.parse(HTTP_REQUEST.responseText);
+                const regData = JSON.parse(HTTP_REQUEST.responseText);
                 console.log(regData);
 
-                if (regData.message) {
-                    let token = regData.Data.token;
+                if (regData.message && regData.Data && regData.Data.token) {
+                    const token = regData.Data.token;
                     localStorage.setItem('_token', token);
                     console.log(token);
 
                     _load('/MODULES/meccenger.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
+                        initMessenger(token);
                     });
+                } else {
+                    console.error("Ошибка регистрации:", regData.message);
                 }
             }
         };
@@ -128,78 +131,93 @@ function onLoadAuth() {
         fdata.append("pass", document.querySelector('input[name="Pass"]').value);
 
         _post({ url: `${HOST}/auth/`, data: fdata }, function (responseText) {
-            AuthData = JSON.parse(responseText);
+            const AuthData = JSON.parse(responseText);
             console.log(AuthData);
 
-            if (AuthData.message) {
-                token = AuthData.Data.token
+            if (AuthData.message && AuthData.Data && AuthData.Data.token) {
+                const token = AuthData.Data.token;
+                localStorage.setItem('_token', token);
                 console.log(token);
                 _load('/MODULES/meccenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
-                })
-            }
-        })
-    });
-}
-//#endregion
 
-
-//#region logout
-/*function logout() {
-    document.querySelector('.btn_header').addEventListener('click', function () {
-        let fdata = new FormData();
-
-        _del({ url: `${HOST}/auth/`, data: fdata }, function (responseText) {
-            let LogData = JSON.parse(responseText);
-            console.log(LogData);
-
-            if (LogData) {
-                token = null;
-                console.log(token);
-                _load('/MODULES/auth.html', function (responseText) {
-                    CONTENT.innerHTML = responseText;
-
+                    initMessenger(token);
                 });
+            } else {
+                console.error("Ошибка авторизации:", AuthData.message);
             }
         });
     });
-}*/
-
-
-function _load(url, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            callback(xhr.responseText);
-        } else {
-            console.error('Ошибка загрузки:', xhr.status);
-        }
-    };
-    xhr.send();
 }
 
+
+function initMessenger(token) {
+}
+
+
+function sendMessage(host, chat_id, text, callback) {
+    var xhr = new XMLHttpRequest();
+    var url = host + "/chats/";
+    var data = JSON.stringify({
+        chat_id: chat_id,
+        text: text
+    });
+
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 201) {
+                try {
+                    var responseObj = JSON.parse(xhr.responseText);
+                    if (responseObj.Data === true || responseObj.message === 'success') {
+                        callback(null, responseObj.message || 'Сообщение отправлено');
+                    } else {
+                        callback(new Error('Ошибка при отправке сообщения'));
+                    }
+                } catch (e) {
+                    callback(new Error('Ошибка при разборе ответа'));
+                }
+            } else {
+                callback(new Error(`Статус: ${xhr.status}`));
+            }
+        }
+    };
+
+    xhr.send(data);
+}
+
+//#region logout
 function logout(url, token) {
     document.querySelector('.btn_header').addEventListener("click", function () {
+
         const xhr = new XMLHttpRequest();
         xhr.open("DELETE", url);
         xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-      
+
         xhr.onload = function () {
             if (xhr.status >= 200 && xhr.status < 300) {
                 console.log("Токен успешно удалён", xhr.responseText);
-                
-                _load('/MODULES/auth.html', function (responseText) {
-                    const CONTENT = document.getElementById('CONTENT');
-                    if (CONTENT) {
+
+                _load('/modules/auth.html', function (responseText) {
+                    const contentDiv = document.getElementById('CONTENT');
+                    if (contentDiv) {
+                        contentDiv.innerHTML = responseText;
+                    } else {
                         CONTENT.innerHTML = responseText;
-                    }
+                    } 
                 });
+
+
+                localStorage.removeItem('_token');
+
             } else {
-                console.error('Ошибка при получении токена', xhr.status, xhr.responseText);
+                console.error('Ошибка при удалении токена:', xhr.status, xhr.responseText);
             }
         };
 
         xhr.send();
+
     });
 }
