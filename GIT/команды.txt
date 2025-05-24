@@ -2,5 +2,5 @@ git config --global --add safe.directory '*'
 
 
 git add .
-git commit -m "21.05.2025"
+git commit -m "23.05.2025"
 git push -u origin main

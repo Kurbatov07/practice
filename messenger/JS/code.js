@@ -140,6 +140,8 @@ function onLoadAuth() {
                 console.log(token);
                 _load('/MODULES/meccenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
+                    logout();
+                    sendMessage();
 
                     initMessenger(token);
                 });
@@ -150,74 +152,66 @@ function onLoadAuth() {
     });
 }
 
+document.querySelector('.btn_mess').addEventListener('click', function () {
+    let fdata = new FormData();
+    function initMessenger(token) {
+    }
 
-function initMessenger(token) {
-}
 
+    function sendMessage(host, chat_id, text, callback) {
+        var xhr = new XMLHttpRequest();
+        var url = host + "/chats/";
+        var data = JSON.stringify({
+            chat_id: chat_id,
+            text: text
+        });
 
-function sendMessage(host, chat_id, text, callback) {
-    var xhr = new XMLHttpRequest();
-    var url = host + "/chats/";
-    var data = JSON.stringify({
-        chat_id: chat_id,
-        text: text
-    });
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
 
-    xhr.open('POST', url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200 || xhr.status == 201) {
-                try {
-                    var responseObj = JSON.parse(xhr.responseText);
-                    if (responseObj.Data === true || responseObj.message === 'success') {
-                        callback(null, responseObj.message || 'Сообщение отправлено');
-                    } else {
-                        callback(new Error('Ошибка при отправке сообщения'));
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    try {
+                        var responseObj = JSON.parse(xhr.responseText);
+                        if (responseObj.Data === true || responseObj.message === 'success') {
+                            callback(null, responseObj.message || 'Сообщение отправлено');
+                        } else {
+                            callback(new Error('Ошибка при отправке сообщения'));
+                        }
+                    } catch (e) {
+                        callback(new Error('Ошибка при разборе ответа'));
                     }
-                } catch (e) {
-                    callback(new Error('Ошибка при разборе ответа'));
+                } else {
+                    callback(new Error(`Статус: ${xhr.status}`));
                 }
-            } else {
-                callback(new Error(`Статус: ${xhr.status}`));
             }
-        }
-    };
+        };
+    }
+})
 
-    xhr.send(data);
-}
 
 //#region logout
 function logout(url, token) {
     document.querySelector('.btn_header').addEventListener("click", function () {
-
-        const xhr = new XMLHttpRequest();
+        let fdata = new FormData();
+        let xhr = new XMLHttpRequest();
         xhr.open("DELETE", url);
         xhr.setRequestHeader('Authorization', `Bearer ${token}`);
-
-        xhr.onload = function () {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                console.log("Токен успешно удалён", xhr.responseText);
-
-                _load('/modules/auth.html', function (responseText) {
-                    const contentDiv = document.getElementById('CONTENT');
-                    if (contentDiv) {
-                        contentDiv.innerHTML = responseText;
-                    } else {
-                        CONTENT.innerHTML = responseText;
-                    } 
-                });
-
-
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
                 localStorage.removeItem('_token');
-
-            } else {
-                console.error('Ошибка при удалении токена:', xhr.status, xhr.responseText);
+                loadAuth();
             }
-        };
-
-        xhr.send();
-
+        }
+        _load('/modules/auth.html', function (responseText) {
+            const contentDiv = document.getElementById('CONTENT');
+            if (contentDiv) {
+                contentDiv.innerHTML = responseText;
+            } else {
+                CONTENT.innerHTML = responseText;
+            }
+            // xhr.send(fdata);
+        });
     });
 }

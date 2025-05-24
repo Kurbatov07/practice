@@ -10,7 +10,7 @@ body {
 
 header {
     width: 100%;
-    padding-top: 10px;
+    padding-top: 0px;
     display: flex;
     justify-content: space-around;
     background-color: rgba(0, 0, 0, 0.966);
@@ -33,6 +33,38 @@ header {
     color: aliceblue;
     background-color: black;
     text-decoration: none;
+}
+
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    padding-top: 23px;
+}
+
+.burger__line {
+    width: 100%;
+    height: 3px;
+    background-color: #f2f2f2;
+}
+
+
+/* nav */
+
+.nav {
+    border: #f2f2f2 1px solid;
+    border-radius: 0px 20px 20px 20px;
+    margin-bottom: 250px;
+    margin-right: 150px;
+    border-left: none;
+    border-top: none;
+    width: 25%;
+    padding-top: 30px;
+    background-color: rgba(0, 0, 0, 0.788);
 }
 
 
@@ -129,19 +161,6 @@ label {
     display: flex;
     padding-bottom: 150px;
     background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
-}
-
-
-.nav {
-    border: #f2f2f2 1px solid;
-    border-radius: 0px 20px 20px 20px;
-    margin-bottom: 250px;
-    margin-right: 150px;
-    border-left: none;
-    border-top: none;
-    width: 25%;
-    padding-top: 30px;
-    background-color: rgba(0, 0, 0, 0.788);
 }
 
 
