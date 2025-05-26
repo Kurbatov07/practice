@@ -110,7 +110,7 @@ function Registration() {
                     localStorage.setItem('_token', token);
                     console.log(token);
 
-                    _load('/MODULES/meccenger.html', function (responseText) {
+                    _load('/MODULES/messenger.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
                         initMessenger(token);
                     });
@@ -138,12 +138,20 @@ function onLoadAuth() {
                 const token = AuthData.Data.token;
                 localStorage.setItem('_token', token);
                 console.log(token);
-                _load('/MODULES/meccenger.html', function (responseText) {
+                _load('/MODULES/messenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
                     logout();
-                    sendMessage();
 
-                    initMessenger(token);
+                    document.querySelector('.btn_burger').addEventListener('click', function () {
+                        console.log("g")
+                        document.querySelector('.nav').classList.toggle('hidden');
+                    });
+
+                    document.querySelector('.1_btn').addEventListener('click', function () {
+                        _load('/MODULES/auth.html', function (responseText) {
+                            CONTENT.innerHTML = responseText;
+                        })
+                    });
                 });
             } else {
                 console.error("Ошибка авторизации:", AuthData.message);
@@ -151,45 +159,6 @@ function onLoadAuth() {
         });
     });
 }
-
-document.querySelector('.btn_mess').addEventListener('click', function () {
-    let fdata = new FormData();
-    function initMessenger(token) {
-    }
-
-
-    function sendMessage(host, chat_id, text, callback) {
-        var xhr = new XMLHttpRequest();
-        var url = host + "/chats/";
-        var data = JSON.stringify({
-            chat_id: chat_id,
-            text: text
-        });
-
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200 || xhr.status == 201) {
-                    try {
-                        var responseObj = JSON.parse(xhr.responseText);
-                        if (responseObj.Data === true || responseObj.message === 'success') {
-                            callback(null, responseObj.message || 'Сообщение отправлено');
-                        } else {
-                            callback(new Error('Ошибка при отправке сообщения'));
-                        }
-                    } catch (e) {
-                        callback(new Error('Ошибка при разборе ответа'));
-                    }
-                } else {
-                    callback(new Error(`Статус: ${xhr.status}`));
-                }
-            }
-        };
-    }
-})
-
 
 //#region logout
 function logout(url, token) {
@@ -215,3 +184,6 @@ function logout(url, token) {
         });
     });
 }
+//#endregion
+
+

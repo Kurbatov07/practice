@@ -36,7 +36,7 @@ header {
 }
 
 
-.burger {
+.btn_burger {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -67,6 +67,10 @@ header {
     background-color: rgba(0, 0, 0, 0.788);
 }
 
+
+.hidden {
+    display: none ! important;
+}
 
 /* auth */
 
@@ -196,8 +200,8 @@ label {
     padding-bottom: 250px;
     padding-left: 20px;
     padding-right: 30px;
-    margin-right: 270px;
     margin-bottom: 50px;
+    margin-left: 300px;
     border: #f2f2f2 1px solid;
 }
 
@@ -220,7 +224,7 @@ label {
 
 
 .inp_chat {
-    width: 25%;
+    width: 20%;
     border: 1px #f2f2f2 solid;
     border-radius: 20px;
     background-color: black;
@@ -229,7 +233,7 @@ label {
     padding: 10px;
 
     position: absolute;
-    left: 936.533px;
+    left: 620.533px;
     top: 800px;
 }
 
@@ -252,7 +256,7 @@ label {
     padding-top: 323px;
     margin-left: 0px;
     position: absolute;
-    left: 877.3px;
+    left: 570px;
     top: 190px;
     padding-right: 250px;
     padding-left: 450px;
@@ -266,7 +270,7 @@ button {
     border: 1px solid;
     border-radius: 20px;
     position: absolute;
-    left: 1462px;
+     left: 1060px;
     top: 805px;
     padding: 5px;
     background-color: #f2f2f2;
@@ -290,7 +294,7 @@ button {
 
     position: absolute;
     bottom: 743px;
-    left: 877px;
+    left: 570px;
 
     padding-bottom: 19px;
     padding-left: 311px;
