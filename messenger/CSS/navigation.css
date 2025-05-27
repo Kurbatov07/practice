@@ -1,0 +1,130 @@
+/* nav */
+
+.nav {
+    opacity: 0.6;
+    border: #f2f2f2 1px solid;
+    border-radius: 0px 20px 20px 20px;
+    margin-bottom: 250px;
+    margin-right: 150px;
+    border-left: none;
+    border-top: none;
+    width: 25%;
+    padding-top: 30px;
+    background-color: rgba(0, 0, 0, 0.788);
+}
+
+
+.h2_mess_1 {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.h2_mess_2 {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.h2_mess_3 {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.h2_mess_4 {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+
+.h2_mess_5 {
+    color: #f2f2f2;
+    display: block;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.hidden {
+    display: none ! important;
+}
+
+
+/* useData */
+
+.user_data {
+    background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
+    padding-bottom: 503px;
+}
+
+.main_block_useData {
+    background-color: #707070;
+    border: 1px solid;
+    text-align: center;
+    margin-left: 570px;
+    margin-right: 570px;
+    padding: 80px;
+    padding-bottom: 130px;
+}
+
+
+.block_useData_2 {
+
+    background-color: #f2f2f2;
+    margin-left: 570px;
+    margin-right: 570px;
+    border: 1px solid;
+    border-left: none;
+
+    padding-left: 109px;
+    padding-right: 109px;
+    padding-bottom: 268px;
+    position: absolute;
+    top: 200px;
+    left: 622px;
+}
+
+
+.h2_useData_1 {
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.h2_useData_2 {
+    text-align: center;
+    font-size: 2rem;
+}

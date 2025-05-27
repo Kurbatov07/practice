@@ -141,13 +141,13 @@ function onLoadAuth() {
                 _load('/MODULES/messenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
                     logout();
+                    userData();
 
                     document.querySelector('.btn_burger').addEventListener('click', function () {
-                        console.log("g")
                         document.querySelector('.nav').classList.toggle('hidden');
                     });
 
-                    document.querySelector('.1_btn').addEventListener('click', function () {
+                    document.querySelector('.h2_mess_1').addEventListener('click', function () {
                         _load('/MODULES/auth.html', function (responseText) {
                             CONTENT.innerHTML = responseText;
                         })
@@ -160,6 +160,15 @@ function onLoadAuth() {
     });
 }
 
+
+function userData() {
+    document.querySelector('.h2_mess_3').addEventListener('click', function(){
+    let wUser = window.open ('/MODULES/useData.html', '_blank',"width=600,height=400,left=200,top=200", 'popup = yes')
+    wUser.resizeBy(200, 100)
+    wUser.moveTo(500,400);
+    })
+}
+//#endregion
 //#region logout
 function logout(url, token) {
     document.querySelector('.btn_header').addEventListener("click", function () {
