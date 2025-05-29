@@ -162,11 +162,13 @@ function onLoadAuth() {
 
 
 function userData() {
-    document.querySelector('.h2_mess_3').addEventListener('click', function(){
-    let wUser = window.open ('/MODULES/useData.html', '_blank',"width=600,height=400,left=200,top=200", 'popup = yes')
-    wUser.resizeBy(200, 100)
-    wUser.moveTo(500,400);
-    })
+    document.querySelector('.h2_mess_3').addEventListener('click', function () {
+        window.open('/MODULES/useData.html', '_blank', 'width=600,height=400,zoom=33');
+    });
+}
+
+function useData() {
+    resizeBy(4500,4500)
 }
 //#endregion
 //#region logout

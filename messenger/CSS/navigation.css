@@ -87,16 +87,16 @@
 
 .user_data {
     background: linear-gradient(rgb(26, 24, 24), #f2f2f2);
-    padding-bottom: 503px;
+    padding-bottom: 414px;
+    padding-top: 192px;
 }
 
 .main_block_useData {
     background-color: #707070;
     border: 1px solid;
     text-align: center;
-    margin-left: 570px;
-    margin-right: 570px;
-    padding: 80px;
+    
+    padding-top: 117px;
     padding-bottom: 130px;
 }
 
