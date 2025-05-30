@@ -1,81 +1,92 @@
-/* nav */
+/* navigation */
 
 .nav {
-    opacity: 0.6;
-    border: #f2f2f2 1px solid;
-    border-radius: 0px 20px 20px 20px;
-    margin-bottom: 250px;
-    margin-right: 150px;
-    border-left: none;
-    border-top: none;
+    position: absolute;
+    bottom: 430px;
+    left: 385px;
+    background-color: #f2f2f273;
+    border: 1px solid #f2f2f2;
+    border-radius: 15px;
     width: 25%;
-    padding-top: 30px;
-    background-color: rgba(0, 0, 0, 0.788);
+    padding: 20px;
+    padding-bottom: 50px;
+
+}
+
+
+.h2_nav {
+    font-size: 2.2rem;
+    text-align: center;
+    border: 1px solid #f2f2f2;
+    border-left: none;
+    border-right: none;
+    border-top: none;
 }
 
 
 .h2_mess_1 {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     text-decoration: none;
-    border: 1px solid;
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-right: 405px;
 }
 
 
 .h2_mess_2 {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     text-decoration: none;
-    border: 1px solid;
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-right: 428px;
 }
 
 
 .h2_mess_3 {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     text-decoration: none;
-    border: 1px solid;
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-right: 345px;
 }
 
 
 .h2_mess_4 {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     text-decoration: none;
-    border: 1px solid;
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-right: 408px;
 }
 
 
 .h2_mess_5 {
-    color: #f2f2f2;
-    display: block;
-    font-size: 1.4rem;
-    margin-bottom: 20px;
     text-decoration: none;
-    border: 1px solid;
+    font-size: 1.3rem;
+    color: #f2f2f2;
+    border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
+    padding-right: 355px;
+}
+
+
+.div_nav {
+    display: block;
+    margin-top: 15px;
 }
 
 .hidden {
@@ -95,7 +106,7 @@
     background-color: #707070;
     border: 1px solid;
     text-align: center;
-    
+
     padding-top: 117px;
     padding-bottom: 130px;
 }

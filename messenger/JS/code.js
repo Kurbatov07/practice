@@ -112,7 +112,6 @@ function Registration() {
 
                     _load('/MODULES/messenger.html', function (responseText) {
                         CONTENT.innerHTML = responseText;
-                        initMessenger(token);
                     });
                 } else {
                     console.error("Ошибка регистрации:", regData.message);
@@ -165,10 +164,6 @@ function userData() {
     document.querySelector('.h2_mess_3').addEventListener('click', function () {
         window.open('/MODULES/useData.html', '_blank', 'width=600,height=400,zoom=33');
     });
-}
-
-function useData() {
-    resizeBy(4500,4500)
 }
 //#endregion
 //#region logout
