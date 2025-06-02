@@ -30,7 +30,7 @@ header {
     border: 1px solid #f2f2f2;
     border-radius: 7px;
     color: aliceblue;
-    background: linear-gradient(rgba(28, 36, 145, 0.527), #f2f2f2);
+    background-color: #f2f2f273;
     text-decoration: none;
 }
 
@@ -81,12 +81,6 @@ header {
 .h2_auth {
     font-size: 3rem;
     color: rgb(27, 27, 27);
-}
-
-
-input {
-    width: 70%;
-    margin-bottom: 10px;
 }
 
 
@@ -161,8 +155,20 @@ label {
     text-align: left;
     padding-left: 70px;
     padding-right: 70px;
-    padding-bottom: 7px;
-    padding-top: 7px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin-top: 150px;
+    margin-left: 220px;
+}
+
+input {
+    width: 40%;
+    margin-bottom: 10px;
+}
+
+
+input:focus {
+    outline-color: rgba(18, 31, 212, 0.527);
 }
 
 
@@ -170,7 +176,7 @@ button {
     border: 1px solid #f2f2f2;
     border-radius: 20px;
     padding: 10px;
-    background-color: #3f3c3ce0;
+    background-color: #3f3c3ca4;
     color: #111;
     margin-top: 10px;
 }

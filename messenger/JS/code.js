@@ -141,6 +141,8 @@ function onLoadAuth() {
                     CONTENT.innerHTML = responseText;
                     logout();
                     userData();
+                    userData();
+                    mess();
 
                     document.querySelector('.btn_burger').addEventListener('click', function () {
                         document.querySelector('.nav').classList.toggle('hidden');
@@ -160,11 +162,36 @@ function onLoadAuth() {
 }
 
 
+
+function mess(text, url) {
+    document.querySelector('.btn_mess').addEventListener('click', function () {
+        let xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                let response = JSON.parse(xhr.responseText);
+                console.log('Сообщение отправлено', response);
+            } else {
+                console.error('Ошибка при отправке сообщения', xhr.status, xhr.statusText);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Ошибка при отправке сообщения', xhr.status, xhr.statusText);
+        };
+        let data = JSON.stringify({ message: text });
+    });
+}
+
+
 function userData() {
     document.querySelector('.h2_mess_3').addEventListener('click', function () {
         window.open('/MODULES/useData.html', '_blank', 'width=600,height=400,zoom=33');
     });
 }
+
 //#endregion
 //#region logout
 function logout(url, token) {
