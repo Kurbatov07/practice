@@ -163,26 +163,26 @@ function onLoadAuth() {
 
 
 
-function mess(text, url) {
-    document.querySelector('.btn_mess').addEventListener('click', function () {
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', url, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
+function mess() {
+    document.querySelector('btn_mess').addEventListener('click', function(){
+        const message = document.getElementById ('messageInput').value;
+        const messageList = document.getElementById('messageList');
+        const xhr = new XMLHttpRequest();
 
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                let response = JSON.parse(xhr.responseText);
-                console.log('Сообщение отправлено', response);
+        xhr.open('POST',`${HOST}/chats/`, true);
+        xhr.setRequestHeader('Content-Type', 'application/Json');
+
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                const response = JSON.parse(xhr.responseText);
+                const newLi = document.createElement ('Li');
+                newLi .textContent = response.message;
+                messageList.appendChild('newLi')
             } else {
-                console.error('Ошибка при отправке сообщения', xhr.status, xhr.statusText);
+                console.error('Ошибка при отправки сообщения', xhr.status, xhr.statusText);
             }
-        };
-
-        xhr.onerror = function () {
-            console.error('Ошибка при отправке сообщения', xhr.status, xhr.statusText);
-        };
-        let data = JSON.stringify({ message: text });
-    });
+        }
+    })
 }
 
 

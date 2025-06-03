@@ -194,11 +194,25 @@ button {
     font-size: 2rem;
     color: #f2f2f2;
     padding: 10px;
+    text-align: center;
+
     border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
-    text-align: center;
+
+}
+
+
+.mess_block {
+    position: absolute;
+    left: 550px;
+    bottom: 200px;
+
+    padding-left: 450px;
+    padding-right: 450px;
+    padding-top: 300px;
+    padding-bottom: 350px;
 }
 
 
@@ -206,13 +220,13 @@ button {
 /* registration*/
 
 .regist {
-
+    padding-bottom: 62px;
     background: linear-gradient(rgba(18, 31, 212, 0.527), rgb(17, 177, 206));
 }
 
 
 .con_regist {
-    width: 40%;
+    width: 30%;
     margin: 0 auto;
     padding-top: 200px;
     padding-bottom: 228px;
@@ -222,7 +236,8 @@ button {
 
 .regist_div {
     background-color: #f2f2f273;
-    padding: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     border: #000000 1px solid;
     border-radius: 20px;
 }
@@ -250,6 +265,11 @@ button {
     margin-right: 5px;
     margin-left: 5px;
     margin-bottom: 10px;
+}
+
+
+.div_2_regist {
+    display: block;
 }
 
 
