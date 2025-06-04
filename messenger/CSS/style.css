@@ -147,7 +147,7 @@ label {
 }
 
 
-.inp_chat {
+.inputMessage {
     border: 1px #f2f2f2 solid;
     border-radius: 20px;
     background-color: #f2f2f273;
@@ -213,6 +213,23 @@ button {
     padding-right: 450px;
     padding-top: 300px;
     padding-bottom: 350px;
+}
+
+
+.btn_create_chat{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 80px;
+    padding-right: 82px;
+
+    border: 1px solid #f2f2f2;
+    border-top: none;
+    color: aliceblue;
+    background-color: #71b2f3;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: absolute;
+    top: 687px;
 }
 
 

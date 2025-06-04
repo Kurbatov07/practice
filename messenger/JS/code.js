@@ -142,7 +142,6 @@ function onLoadAuth() {
                     logout();
                     userData();
                     userData();
-                    mess();
 
                     document.querySelector('.btn_burger').addEventListener('click', function () {
                         document.querySelector('.nav').classList.toggle('hidden');
@@ -157,32 +156,54 @@ function onLoadAuth() {
             } else {
                 console.error("Ошибка авторизации:", AuthData.message);
             }
+
+            
+
+            function mess() {
+                let message = document.getElementById('messageInput').value;
+                if (message.trim() === "") {
+                    return;
+                }
+
+                let xhr = new XMLHttpRequest();
+                xhr.open('POST', `${HOST}/chats/`);
+                xhr.setRequestHeader("Content-type", "application/json");
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        let response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            displayMessage(message, true);
+                        } else {
+                            alert("Ошибка при отправке сообщения: " + response.message);
+                        }
+                    } else {
+                        alert("Ошибка при отправке сообщения: статус " + xhr.status);
+                    }
+                };
+
+                xhr.onerror = function () {
+                    alert("Ошибка сети при отправке сообщения");
+                };
+
+                xhr.send(JSON.stringify({ message: message }));
+                document.getElementById("messageInput").value = "";
+            }
+
+            function displayMessage(message, isSent) {
+                const messagesContainer = document.getElementById('messages');
+
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message_chat ' + (isSent ? 'sent' : 'received');
+
+                const messageText = document.createElement('p');
+                messageText.textContent = message;
+
+                messageDiv.appendChild(messageText);
+                messagesContainer.appendChild(messageDiv);
+            }
         });
     });
-}
-
-
-
-function mess() {
-    document.querySelector('btn_mess').addEventListener('click', function(){
-        const message = document.getElementById ('messageInput').value;
-        const messageList = document.getElementById('messageList');
-        const xhr = new XMLHttpRequest();
-
-        xhr.open('POST',`${HOST}/chats/`, true);
-        xhr.setRequestHeader('Content-Type', 'application/Json');
-
-        xhr.onload = function() {
-            if (xhr.status == 200) {
-                const response = JSON.parse(xhr.responseText);
-                const newLi = document.createElement ('Li');
-                newLi .textContent = response.message;
-                messageList.appendChild('newLi')
-            } else {
-                console.error('Ошибка при отправки сообщения', xhr.status, xhr.statusText);
-            }
-        }
-    })
 }
 
 
