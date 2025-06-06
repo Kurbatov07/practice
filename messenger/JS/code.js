@@ -142,6 +142,7 @@ function onLoadAuth() {
                     logout();
                     userData();
                     userData();
+                    userChats();
 
                     document.querySelector('.btn_burger').addEventListener('click', function () {
                         document.querySelector('.nav').classList.toggle('hidden');
@@ -150,6 +151,9 @@ function onLoadAuth() {
                     document.querySelector('.h2_mess_1').addEventListener('click', function () {
                         _load('/MODULES/auth.html', function (responseText) {
                             CONTENT.innerHTML = responseText;
+
+
+
                         })
                     });
                 });
@@ -157,7 +161,7 @@ function onLoadAuth() {
                 console.error("Ошибка авторизации:", AuthData.message);
             }
 
-            
+
 
             function mess() {
                 let message = document.getElementById('messageInput').value;
@@ -204,16 +208,74 @@ function onLoadAuth() {
             }
         });
     });
+
+
+    function userChats() {
+        let HTTP_REQUEST = new XMLHttpRequest();
+        HTTP_REQUEST.open('GET', `${HOST}/chats/`);
+        HTTP_REQUEST.setRequestHeader("Authorization", "Bearer " + localStorage.getItem('_token'));
+        HTTP_REQUEST.send();
+
+        HTTP_REQUEST.onreadystatechange = function () {
+            if (HTTP_REQUEST.readyState === 4) {
+                if (HTTP_REQUEST.status === 200) {
+                    let chatData = JSON.parse(HTTP_REQUEST.responseText);
+                    setTimeout(getChats, ITERVAL_CHATS);
+
+                    chatData.forEach(element => {
+                        let divChats = document.getElementById(`chat_${element.chat_id}`);
+                        if (divChats) {
+                            if (divChats.getAttribute('last_msg') != element.chat_last_message) {
+                                if (divChats._timerMsgChat) {
+                                    clearInterval(divChats._timerMsgChat);
+                                }
+                                divChats._timerMsgChat = setInterval(() => {
+                                    divChats.classList.toggle('chat-alert');
+                                }, 500);
+                            }
+                        } else {
+                            let newChatDiv = createdivChat(element);
+                            document.querySelector('users').appendChild(newChatDiv);
+                        }
+                    });
+                } else {
+                    console.error('Ошибка при получении чатов:', HTTP_REQUEST.status);
+                }
+            }
+        };
+    }
+
+
+    function createChat() {
+        document.querySelector('.btn_create_chat').addEventListener('click', function () {
+            let fdata = new FormData();
+            fdata.append('email', document.querySelector('input[name = "email-work"]').value)
+            let HTTP_REQUEST = new XMLHttpRequest();
+            HTTP_REQUEST.open('POST', `${HOST}/chats/`);
+            HTTP_REQUEST.setRequestHeader("Authorization", "Bearer " + localStorage.getItem('_token'));
+            HTTP_REQUEST.send(fdata);
+            HTTP_REQUEST.onreadystatechange = function () {
+                if (HTTP_REQUEST.readyState == 4) {
+                    localStorage.getItem('_token');
+                    localStorage.getItem('_UserID');
+                    createData = JSON.parse(HTTP_REQUEST.responseText);
+                    userChats();
+                    document.querySelector('users').append(userChats());
+                    document.querySelector('input[name = "email-work"]').value = ''
+                }
+            }
+        })
+    }
 }
 
-
+//#region userData
 function userData() {
     document.querySelector('.h2_mess_3').addEventListener('click', function () {
         window.open('/MODULES/useData.html', '_blank', 'width=600,height=400,zoom=33');
     });
 }
-
 //#endregion
+
 //#region logout
 function logout(url, token) {
     document.querySelector('.btn_header').addEventListener("click", function () {
