@@ -220,7 +220,6 @@ function onLoadAuth() {
             if (HTTP_REQUEST.readyState === 4) {
                 if (HTTP_REQUEST.status === 200) {
                     let chatData = JSON.parse(HTTP_REQUEST.responseText);
-                    setTimeout(getChats, ITERVAL_CHATS);
 
                     chatData.forEach(element => {
                         let divChats = document.getElementById(`chat_${element.chat_id}`);
@@ -234,8 +233,8 @@ function onLoadAuth() {
                                 }, 500);
                             }
                         } else {
-                            let newChatDiv = createdivChat(element);
-                            document.querySelector('users').appendChild(newChatDiv);
+                            // let newChatDiv = createdivChat(element);
+                            // document.querySelector('users').appendChild(newChatDiv);
                         }
                     });
                 } else {
@@ -271,8 +270,14 @@ function onLoadAuth() {
 //#region userData
 function userData() {
     document.querySelector('.h2_mess_3').addEventListener('click', function () {
-        window.open('/MODULES/useData.html', '_blank', 'width=600,height=400,zoom=33');
+        window.open('/MODULES/useData.html', '_blank', 'width=700,height=500,zoom=33');
     });
+}
+
+function userData2() {
+    document.querySelector('.btn_useData').addEventListener('click', function(){
+        window.open()
+    })
 }
 //#endregion
 
