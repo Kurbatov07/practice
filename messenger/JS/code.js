@@ -151,9 +151,6 @@ function onLoadAuth() {
                     document.querySelector('.h2_mess_1').addEventListener('click', function () {
                         _load('/MODULES/auth.html', function (responseText) {
                             CONTENT.innerHTML = responseText;
-
-
-
                         })
                     });
                 });
@@ -270,13 +267,14 @@ function onLoadAuth() {
 //#region userData
 function userData() {
     document.querySelector('.h2_mess_3').addEventListener('click', function () {
-        window.open('/MODULES/useData.html', '_blank', 'width=700,height=500,zoom=33');
+        window.open('/MODULES/useData.html', '_blank', 'width=700,height=500,');
+        Data();
     });
 }
 
-function userData2() {
-    document.querySelector('.btn_useData').addEventListener('click', function(){
-        window.open()
+function Data() {
+    document.querySelector('.btn_useData').addEventListener('click', function () {
+        window.open('/MODULES/Data.html');
     })
 }
 //#endregion
