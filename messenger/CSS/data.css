@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+
+.con_dataC {
+    width: 70%;
+    margin: 0 auto;
+    padding: 200px;
+}
+
+/* dataC */
+
+.dataC {
+    background-color: #EDDEE1;
+    padding-bottom: 553px;
+}
+
+
+.main_block_dataC {
+    border: 1px solid #f2f2f2;
+    text-align: center;
+    background-color: #DCC7CC;
+
+    margin-left: 250px;
+    margin-right: 250px;
+
+    padding: 50px;
+    border-radius: 40px;
+}
+
+
+.h2_dataC {
+    font-size: 2rem;
+    text-align: center;
+}
+
+
+.l {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+.inp_dataC {
+    width: 20%;
+    padding: 5px;
+    text-align: center;
+}
+
+
+.btn_dataC {
+    text-decoration: none;
+    border: 1px solid #f2f2f2;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #D0BBB2;
+    color: #111;
+}
+
+
+.btn_div_dataC {
+    margin-top: 30px;
+}
+
+
+.lab_dataC {
+    font-size: 20px;
+}

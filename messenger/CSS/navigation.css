@@ -4,7 +4,7 @@
     position: absolute;
     bottom: 430px;
     left: 385px;
-    background-color: #f2f2f273;
+    background-color: #DCC7CC;
     border: 1px solid #f2f2f2;
     border-radius: 15px;
     width: 25%;
@@ -100,12 +100,12 @@
     border-radius: 20px;
     margin-left: 570px;
     margin-right: 570px;
-    background-color: #f2f2f273;
+    background-color: #DCC7CC;
     text-align: center;
     padding: 50px;
     position: absolute;
-    top: 254px;
-    left: 260px;
+    top: 200px;
+    left: 350px;
 }
 
 

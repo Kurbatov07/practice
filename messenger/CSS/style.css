@@ -12,7 +12,7 @@ header {
     padding-top: 0px;
     display: flex;
     justify-content: space-around;
-    background: linear-gradient(rgba(18, 31, 212, 0.527));
+    background-color: #73726D;
 }
 
 
@@ -64,7 +64,7 @@ header {
 .auth {
     text-align: center;
     padding-bottom: 429px;
-    background: linear-gradient(rgba(18, 31, 212, 0.527), rgb(17, 177, 206));
+    background-color: #EDDEE1;
 }
 
 
@@ -73,8 +73,8 @@ header {
     border-radius: 20px;
     padding: 5px;
     display: inline-block;
-    padding: 30px;
-    background-color: #f2f2f273;
+    padding: 40px;
+    background-color: #DCC7CC;
 }
 
 
@@ -99,8 +99,8 @@ label {
     font-size: 1.1rem;
     border: 1px solid #f2f2f2;
     border-radius: 7px;
-    color: aliceblue;
-    background-color: black;
+    color: #73726D;
+    background-color: #D0BBB2;
     text-decoration: none;
     margin-top: 5px;
     margin-right: 5px;
@@ -117,8 +117,8 @@ label {
     font-size: 1.1rem;
     border: 1px solid #f2f2f2;
     border-radius: 7px;
-    color: aliceblue;
-    background-color: black;
+    color: #73726D;
+    background-color: #D0BBB2;
     text-decoration: none;
     margin-top: 5px;
     margin-right: 5px;
@@ -136,9 +136,9 @@ label {
 
 
 .messenger {
-    background: linear-gradient(rgba(18, 31, 212, 0.527), rgb(17, 177, 206));
+    background-color: #EDDEE1;
     padding-top: 1px;
-    padding-bottom: 214px;
+    padding-bottom: 55px;
 }
 
 
@@ -150,7 +150,7 @@ label {
 .inputMessage {
     border: 1px #f2f2f2 solid;
     border-radius: 20px;
-    background-color: #f2f2f273;
+    background-color: #EDEDED;
     color: #111;
     text-align: left;
     padding-left: 70px;
@@ -176,31 +176,33 @@ button {
     border: 1px solid #f2f2f2;
     border-radius: 20px;
     padding: 10px;
-    background-color: #71b2f3;
-    color: #111;
+    background-color: #d0bbb27a;
+    color: #73726D;
     margin-top: 10px;
 }
 
 
 .users {
-    background-color: #f2f2f273;
+    background-color: #DCC7CC;
     margin-right: 1600px;
-    padding-bottom: 500px;
+    padding-bottom: 510px;
     border: 1px solid #f2f2f2;
 }
 
 
 .h2_users {
     font-size: 2rem;
+    background-color: #B9998C;
     color: #f2f2f2;
-    padding: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
     text-align: center;
+    margin-top: 0;
 
     border: 1px solid #f2f2f2;
     border-top: none;
     border-left: none;
     border-right: none;
-
 }
 
 
@@ -220,16 +222,16 @@ button {
     padding-bottom: 10px;
     padding-top: 10px;
     padding-left: 80px;
-    padding-right: 82px;
+    padding-right: 97px;
 
     border: 1px solid #f2f2f2;
     border-top: none;
     color: aliceblue;
-    background-color: #71b2f3;
+    background-color: #D0BBB2;
     text-decoration: none;
     font-size: 1.1rem;
     position: absolute;
-    top: 687px;
+    top: 690px;
 }
 
 
@@ -238,7 +240,7 @@ button {
 
 .regist {
     padding-bottom: 62px;
-    background: linear-gradient(rgba(18, 31, 212, 0.527), rgb(17, 177, 206));
+    background-color: #EDDEE1;
 }
 
 
@@ -252,10 +254,10 @@ button {
 
 
 .regist_div {
-    background-color: #f2f2f273;
+    background-color: #DCC7CC;
     padding-top: 20px;
     padding-bottom: 20px;
-    border: #000000 1px solid;
+    border: #f2f2f2 1px solid;
     border-radius: 20px;
 }
 
@@ -275,8 +277,8 @@ button {
     font-size: 1.1rem;
     border: 1px solid #f2f2f2;
     border-radius: 7px;
-    color: aliceblue;
-    background-color: black;
+    color: #73726D;
+    background-color: #D0BBB2;
     text-decoration: none;
     margin-top: 5px;
     margin-right: 5px;
@@ -290,93 +292,3 @@ button {
 }
 
 
-/* navigation */
-
-.nav {
-    position: absolute;
-    bottom: 430px;
-    left: 385px;
-    background-color: #f2f2f273;
-    border: 1px solid #f2f2f2;
-    border-radius: 15px;
-    width: 25%;
-    padding: 20px;
-    padding-bottom: 50px;
-
-}
-
-
-.h2_nav {
-    font-size: 2.2rem;
-    text-align: center;
-    border: 1px solid #f2f2f2;
-    border-left: none;
-    border-right: none;
-    border-top: none;
-}
-
-
-.h2_mess_1 {
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-right: 405px;
-}
-
-
-.h2_mess_2 {
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-right: 428px;
-}
-
-
-.h2_mess_3 {
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-right: 345px;
-}
-
-
-.h2_mess_4 {
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-right: 408px;
-}
-
-
-.h2_mess_5 {
-    text-decoration: none;
-    font-size: 1.3rem;
-    color: #f2f2f2;
-    border: 1px solid #f2f2f2;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    padding-right: 355px;
-}
-
-
-.div_nav {
-    display: block;
-    margin-top: 15px;
-}

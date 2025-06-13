@@ -123,6 +123,7 @@ function Registration() {
 //#endregion
 
 //#region messenger
+
 function onLoadAuth() {
     document.querySelector(".btn_auth_1").addEventListener('click', function () {
         let fdata = new FormData();
@@ -140,25 +141,65 @@ function onLoadAuth() {
                 _load('/MODULES/messenger.html', function (responseText) {
                     CONTENT.innerHTML = responseText;
                     logout();
-                    userData();
-                    userData();
                     userChats();
 
                     document.querySelector('.btn_burger').addEventListener('click', function () {
                         document.querySelector('.nav').classList.toggle('hidden');
                     });
 
+                    document.querySelector('.h2_mess_3').addEventListener('click', function () {
+                        document.querySelector('.userData').classList.toggle('hidden');
+                    })
+
+                    document.querySelector('.h2_mess_4').addEventListener('click', function () {
+                        window.open('/MODULES/dataChanges.html', '_self')
+                    })
                     document.querySelector('.h2_mess_1').addEventListener('click', function () {
                         _load('/MODULES/auth.html', function (responseText) {
                             CONTENT.innerHTML = responseText;
                         })
                     });
                 });
+                
+                function message() {
+                    const mess_block = document.getElementById(mess_block);
+                    const inputMessage = document.getElementById(inputMessage);
+                    const btn_mess = document.getElementById(btn_mess);
+
+                    btn_mess.addEventListener('click', () => {
+                        const message = inputMessage.value.trim();
+                        if (message) {
+                            sendRequest(message);
+                            inputMessage.value = '';
+                        }
+                    })
+
+                    function sendRequest(message) {
+                        const xhr = new XMLHttpRequest();
+                        xhr.open('POST', `${HOST}/chats/`);
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+
+                        xhr.onload = () => {
+                            if (xhr.status == 200) {
+                                const response = JSON.parse(xhr.responseText);
+                                const newMessageElement = document.createElement('div');
+                                newMessageElement.textContent = response.message;
+                                mess_block.appendChild(newMessageElement);
+                            } else {
+                                console.error('Error:', xhr.status, xhr.statusText);
+                            }
+                        };
+
+                        xhr.onerror = () => {
+                            console.error('Network error');
+                        };
+                    }
+                }
+
+
             } else {
                 console.error("Ошибка авторизации:", AuthData.message);
             }
-
-
 
             function mess() {
                 let message = document.getElementById('messageInput').value;
@@ -221,17 +262,17 @@ function onLoadAuth() {
                     chatData.forEach(element => {
                         let divChats = document.getElementById(`chat_${element.chat_id}`);
                         if (divChats) {
-                            if (divChats.getAttribute('last_msg') != element.chat_last_message) {
+                            if (divChats.getAttribute('div') != element.chat_last_message) {
                                 if (divChats._timerMsgChat) {
                                     clearInterval(divChats._timerMsgChat);
                                 }
                                 divChats._timerMsgChat = setInterval(() => {
-                                    divChats.classList.toggle('chat-alert');
+                                    divChats.classList.toggle('users');
                                 }, 500);
                             }
                         } else {
-                            // let newChatDiv = createdivChat(element);
-                            // document.querySelector('users').appendChild(newChatDiv);
+                            //  let newChatDiv = createdivChat(element);
+                            //  document.querySelector('users').appendChild(newChatDiv);
                         }
                     });
                 } else {
@@ -264,20 +305,7 @@ function onLoadAuth() {
     }
 }
 
-//#region userData
-function userData() {
-    document.querySelector('.h2_mess_3').addEventListener('click', function () {
-        window.open('/MODULES/useData.html', '_blank', 'width=700,height=500,');
-        Data();
-    });
-}
 
-function Data() {
-    document.querySelector('.btn_useData').addEventListener('click', function () {
-        window.open('/MODULES/Data.html');
-    })
-}
-//#endregion
 
 //#region logout
 function logout(url, token) {
@@ -293,6 +321,7 @@ function logout(url, token) {
             }
         }
         _load('/modules/auth.html', function (responseText) {
+            loadAuth();
             const contentDiv = document.getElementById('CONTENT');
             if (contentDiv) {
                 contentDiv.innerHTML = responseText;
